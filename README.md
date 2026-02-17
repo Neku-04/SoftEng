@@ -129,6 +129,7 @@ The system classifies water flow behavior as **Normal** or **Leak Detected** and
 2. Install dependencies:
 
 ```bash
+pip install paho-mqtt numpy pandas scikit-learn joblib RPi.GPIO
 
 ```
 
@@ -142,6 +143,13 @@ The system classifies water flow behavior as **Normal** or **Leak Detected** and
 ### 3️⃣ Model Training
 
 ```python
+   from sklearn.ensemble import RandomForestClassifier
+   import joblib
+   
+   model = RandomForestClassifier(n_estimators=100, random_state=42)
+   model.fit(X_train, y_train)
+   
+   joblib.dump(model, "water_leak_model.pkl")
 
 ```
 
